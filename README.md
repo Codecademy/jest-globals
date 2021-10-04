@@ -98,16 +98,6 @@ import { focus } from "jest-globals";
 expect(focus).toHaveBeenCalledTimes(1);
 ```
 
-#### `getComputedStyle`
-
-```ts
-import { getComputedStyle } from "jest-globals";
-
-globals.getComputedStyle.mockReturnValue({
-  alignContent: "center",
-});
-```
-
 #### `getSelection`
 
 Use `createMockSelection` to create a valid `Selection` with stub data for any field not explicitly provided.
@@ -355,16 +345,57 @@ The following global members are complex enough that they warrant their own dedi
 
 - `document`: [`jest-environment-jsdom`](https://www.npmjs.com/package/jest-environment-jsdom)
 - `fetch`: [`fetch-mock`](https://www.npmjs.com/package/fetch-mock) / [`fetch-mock-jest`](https://www.npmjs.com/package/fetch-mock-jest)
+- `getComputedStyle`: similar to `document`
+- `XMLHTTPRequest`: use `fetch` instead 😄
 
 ## Custom Usage
 
+### Auto-Sorted Involvement
+
+If you'd like `jest-globals` to run after library code, it may be inconvenient to also have a linter plugin thatt auto-sorts your imports.
+
+```ts
+// example.test.js
+import "jest-globals"; // runs first 😔
+import userEvent from "@testing-library/user-event";
+```
+
+If your configuration puts imports under a prefix such as `~/` last, you can create a file whose sole purpose is to import `jest-globals`:
+
+```ts
+// tests/globals
+export * from "jest-globals";
+```
+
+```ts
+// example.test.js
+import userEvent from "@testing-library/user-event";
+import "~/tests/globals"; // runs last 😌
+```
+
+Another (less type safe) workaround is to use Jest's [`moduleNameMapper`](https://jestjs.io/docs/configuration#modulenamemapper-objectstring-string--arraystring) to allow importing under a name like `zzzest-globals`, pushing it alphabetically below other absolute imports:
+
+```json
+{
+  "moduleNameMapper": {
+    "^zzzest-globals$": "jest-globals"
+  }
+}
+```
+
+```ts
+// example.test.js
+import userEvent from "@testing-library/user-event";
+import "zzzest-globals"; // runs last 😌
+```
+
 ### Permanent Involvement
 
-If you'd like `jest-globals` to always be run before all your files, you can include it in your [`setupFilesAfterEnv`](https://jestjs.io/docs/configuration#setupfilesafterenv-array):
+If you'd like `jest-globals` to _always_ be run before all your files, you can include it in your [`setupFilesAfterEnv`](https://jestjs.io/docs/configuration#setupfilesafterenv-array):
 
 ```js
 // ./jest.setup.js
-require('jest-globals');
+require("jest-globals");
 ```
 
 ## Development

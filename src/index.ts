@@ -20,7 +20,6 @@ export const {
   confirm,
   dispatchEvent,
   focus,
-  getComputedStyle,
   getSelection,
   localStorage,
   location,

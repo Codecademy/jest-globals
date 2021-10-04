@@ -13,7 +13,6 @@ export interface MockWindowMembers {
   confirm: Mock<typeof confirm>;
   dispatchEvent: Mock<typeof dispatchEvent>;
   focus: Mock<typeof focus>;
-  getComputedStyle: Mock<typeof getComputedStyle>;
   getSelection: Mock<typeof getSelection>;
   localStorage: MockStorage;
   location: MockLocation;
@@ -46,7 +45,6 @@ export class MockWindow implements MockWindowMembers {
   confirm = fn<typeof confirm>();
   dispatchEvent = fn<typeof dispatchEvent>();
   focus = fn<typeof focus>();
-  getComputedStyle = fn<typeof getComputedStyle>();
   getSelection = fn<typeof getSelection>();
   localStorage = new MockStorage();
   location = createMockLocation();

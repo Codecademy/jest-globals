@@ -3,7 +3,7 @@
     "declaration": true,
     "esModuleInterop": true,
     "module": "commonjs",
-    "target": "esnext"
+    "target": "es2019"
   },
   "extends": "@codecademy/tsconfig",
   "include": ["src"]
