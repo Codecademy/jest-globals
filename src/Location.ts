@@ -18,6 +18,7 @@ export const createMockLocation = () => {
       mockLocation.pathname = newUri.path();
       mockLocation.search = newUri.query();
     }),
+    hash: "",
     href: "",
     host: "",
     origin: "",
