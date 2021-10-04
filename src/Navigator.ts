@@ -2,7 +2,7 @@ import { createMockClipboard } from './Clipboard';
 import { fn } from './mocks';
 
 export const mockNavigator = {
-  clipboard: createMockClipboard,
+  clipboard: createMockClipboard(),
   mockUserAgent: fn<() => string>(),
   sendBeacon: fn<Navigator['sendBeacon']>(),
   get userAgent() {
