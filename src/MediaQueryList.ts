@@ -1,16 +1,15 @@
-import { createMockEventTarget } from './EventTarget';
-import { fn } from './mocks';
+import { fn } from "./mocks";
 
-export const createMockMediaQueryList = <
-  Overrides extends Partial<jest.Mocked<MediaQueryList>>
->(
-  overrides?: Overrides
-): jest.Mocked<MediaQueryList> & Overrides => ({
-  addListener: fn<MediaQueryList['addListener']>(),
+export const createMockMediaQueryList = (
+  overrides?: Partial<jest.Mocked<MediaQueryList>>
+): jest.Mocked<MediaQueryList> => ({
+  addListener: fn<MediaQueryList["addListener"]>(),
+  addEventListener: fn<MediaQueryList["addEventListener"]>(),
+  dispatchEvent: fn<MediaQueryList["dispatchEvent"]>(),
   matches: false,
-  media: '',
-  onchange: fn<MediaQueryList['onchange']>(),
-  removeListener: fn<MediaQueryList['removeListener']>(),
-  ...createMockEventTarget(),
+  media: "",
+  onchange: fn<NonNullable<MediaQueryList["onchange"]>>(),
+  removeListener: fn<MediaQueryList["removeListener"]>(),
+  removeEventListener: fn<MediaQueryList["removeEventListener"]>(),
   ...overrides,
 });

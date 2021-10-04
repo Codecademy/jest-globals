@@ -5,7 +5,7 @@ export class MockStorage implements Storage {
 
   clear = fn<Storage['clear']>(() => this.items.clear());
 
-  getItem = fn<Storage['getItem']>((key) => this.items.get(key));
+  getItem = fn<Storage['getItem']>((key) => this.items.get(key) ?? null);
 
   key = fn<Storage['key']>((index) => this.keys()[index]);
 

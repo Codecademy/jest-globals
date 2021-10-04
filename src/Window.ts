@@ -1,9 +1,9 @@
-import { createMockLocation, MockLocation } from './Location';
-import { createMockMediaQueryList } from './MediaQueryList';
-import { fn, Mock } from './mocks';
-import { MockNavigator, mockNavigator } from './Navigator';
-import { createMockPerformance, MockPerformance } from './Performance';
-import { MockStorage } from './Storage';
+import { createMockLocation, MockLocation } from "./Location";
+import { createMockMediaQueryList } from "./MediaQueryList";
+import { fn, Mock } from "./mocks";
+import { MockNavigator, mockNavigator } from "./Navigator";
+import { createMockPerformance, MockPerformance } from "./Performance";
+import { MockStorage } from "./Storage";
 
 export interface MockWindowMembers {
   addEventListener: Mock<typeof addEventListener>;
@@ -50,9 +50,7 @@ export class MockWindow implements MockWindowMembers {
   getSelection = fn<typeof getSelection>();
   localStorage = new MockStorage();
   location = createMockLocation();
-  matchMedia = fn<typeof matchMedia>().mockReturnValue(
-    createMockMediaQueryList()
-  );
+  matchMedia = fn<typeof matchMedia>().mockReturnValue(createMockMediaQueryList());
   moveBy = fn<typeof moveBy>();
   navigator = mockNavigator;
   open = fn<typeof open>();
@@ -74,5 +72,6 @@ export class MockWindow implements MockWindowMembers {
 
   constructor(settings: Partial<MockWindowMembers> = {}) {
     Object.assign(this, settings);
+    this.top ??= this;
   }
 }
