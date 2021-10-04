@@ -1,0 +1,9 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.rules.customizations": [{ "rule": "*", "severity": "downgrade" }],
+  "files": {
+    "exclude": [".d.ts", ".js"]
+  }
+}

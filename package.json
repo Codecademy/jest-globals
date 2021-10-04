@@ -1,0 +1,61 @@
+{
+  "author": "Codecademy",
+  "description": "Mocks out global variables with Jest spies.",
+  "devDependencies": {
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-typescript": "^7.15.0",
+    "@codecademy/eslint-config": "^5.4.0",
+    "@codecademy/tsconfig": "^0.2.0",
+    "@types/jest": "^27.0.2",
+    "@typescript-eslint/eslint-plugin": "4.32.0",
+    "@typescript-eslint/parser": "^4.32.0",
+    "babel-jest": "^27.2.4",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "husky": "^7.0.2",
+    "jest": "^27.2.4",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.3"
+  },
+  "main": "src/index.js",
+  "homepage": "https://github.com/Codecademy/jest-globals#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "keywords": [
+    "mock",
+    "jest",
+    "tests",
+    "spies",
+    "globals",
+    "window",
+    "dom"
+  ],
+  "license": "MIT",
+  "lint-staged": {
+    "**/*.{js,json,ts,xml,yml}": [
+      "prettier --write"
+    ]
+  },
+  "name": "jest-globals",
+  "peerDependencies": {
+    "jest": ">=26"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codecademy/jest-globals.git"
+  },
+  "scripts": {
+    "compile": "tsc",
+    "format": "prettier --ignore-path .prettierignore \"./**/*.{md,js,json,ts,tsx,yml}\"",
+    "format:write": "yarn format --write",
+    "format:verify": "yarn format --check",
+    "lint": "yarn eslint \"**/*.ts\" --max-warnings 0 --report-unused-disable-directives",
+    "test": "jest"
+  },
+  "types": "src/index.d.ts",
+  "version": "0.1.0"
+}
