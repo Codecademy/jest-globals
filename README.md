@@ -157,19 +157,10 @@ expect(moveBy).toHaveBeenCalledWith(12, 34);
 
 #### `navigator`
 
-`navigator.userAgent` is a getter for a `mockUserAgent: jest.fn()` available on the object.
-
 ```ts
 import { navigator } from "jest-globals";
 
 navigator.mockUserAgent.mockReturnValue("Mozilla/123");
-```
-
-`navigator.clipboard` and `navigator.serviceWorker` are mocks as well.
-
-```ts
-import { navigator } from "jest-globals";
-
 navigator.clipboard.readText.mockResolvedValue("It's over 9,000!");
 expect(navigator.serviceWorker.register).toHaveBeenCalled();
 ```

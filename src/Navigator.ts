@@ -1,28 +1,13 @@
 import { createMockClipboard } from "./Clipboard";
 import { fn } from "./mocks";
+import { createMockServiceWorkerContainer, MockServiceWorker } from "./ServiceWorkerContainer";
 
-export const createMockNavigator = () => {
-  const mockNavigator = {
-    clipboard: createMockClipboard(),
-    mockUserAgent: fn<() => string>(),
-    platform: "",
-    sendBeacon: fn<Navigator["sendBeacon"]>(),
-    serviceWorker: {
-      addEventListener: fn<ServiceWorkerContainer["addEventListener"]>(),
-      getRegistration: fn<ServiceWorkerContainer["getRegistration"]>(),
-      getRegistrations: fn<ServiceWorkerContainer["getRegistrations"]>(),
-      register: fn<ServiceWorkerContainer["register"]>(),
-      removeEventListener: fn<ServiceWorkerContainer["removeEventListener"]>(),
-      startMessages: fn<ServiceWorkerContainer["startMessages"]>(),
-    },
-    get userAgent() {
-      return mockNavigator.mockUserAgent() || "";
-    },
-    set userAgent(userAgent: string) {
-      mockNavigator.mockUserAgent.mockReturnValue(userAgent);
-    },
-  };
-  return mockNavigator;
-};
+export const createMockNavigator = () => ({
+  clipboard: createMockClipboard(),
+  userAgent: '' as string | undefined,
+  serviceWorker: createMockServiceWorkerContainer() as MockServiceWorker | undefined,
+  platform: "",
+  sendBeacon: fn<Navigator["sendBeacon"]>(),
+});
 
 export type MockNavigator = ReturnType<typeof createMockNavigator>;
