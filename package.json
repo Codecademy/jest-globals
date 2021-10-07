@@ -57,7 +57,7 @@
     "lint": "yarn eslint \"**/*.ts\" --max-warnings 0 --report-unused-disable-directives"
   },
   "types": "src/index.d.ts",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "dependencies": {
     "jsuri": "^1.3.1"
   }
