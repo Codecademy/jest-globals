@@ -1,4 +1,0 @@
-{
-  "moduleFileExtensions": ["ts", "js"],
-  "testRegex": ["\\.test\\.ts?$"]
-}

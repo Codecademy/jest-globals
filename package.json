@@ -54,8 +54,7 @@
     "format": "prettier --ignore-path .prettierignore \"./**/*.{md,js,json,ts,tsx,yml}\"",
     "format:write": "yarn format --write",
     "format:verify": "yarn format --check",
-    "lint": "yarn eslint \"**/*.ts\" --max-warnings 0 --report-unused-disable-directives",
-    "test": "jest"
+    "lint": "yarn eslint \"**/*.ts\" --max-warnings 0 --report-unused-disable-directives"
   },
   "types": "src/index.d.ts",
   "version": "0.1.4",

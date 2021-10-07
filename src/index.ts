@@ -1,4 +1,4 @@
-import { MockWindow } from './Window';
+import { MockWindow } from "./Window";
 
 export const globals = new MockWindow({
   top: new MockWindow(),
@@ -7,7 +7,7 @@ export const globals = new MockWindow({
 for (const [key, value] of Object.entries(globals)) {
   Object.defineProperty(globalThis, key, { value });
 
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     Object.defineProperty(window, key, { value });
   }
 }
@@ -44,5 +44,5 @@ export const {
   top,
 } = globals;
 
-export { MockStorage } from './Storage';
-export { MockWindow } from './Window';
+export { MockStorage } from "./Storage";
+export { MockWindow } from "./Window";

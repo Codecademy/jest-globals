@@ -48,7 +48,9 @@ export class MockWindow implements MockWindowMembers {
   getSelection = fn<typeof getSelection>();
   localStorage = new MockStorage();
   location = createMockLocation();
-  matchMedia = fn<typeof matchMedia>().mockReturnValue(createMockMediaQueryList());
+  matchMedia = fn<typeof matchMedia>().mockReturnValue(
+    createMockMediaQueryList()
+  );
   moveBy = fn<typeof moveBy>();
   navigator = mockNavigator;
   open = fn<typeof open>();
