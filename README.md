@@ -165,12 +165,13 @@ import { navigator } from "jest-globals";
 navigator.mockUserAgent.mockReturnValue("Mozilla/123");
 ```
 
-`navigator.clipboard` is a mock as well.
+`navigator.clipboard` and `navigator.serviceWorker` are mocks as well.
 
 ```ts
 import { navigator } from "jest-globals";
 
 navigator.clipboard.readText.mockResolvedValue("It's over 9,000!");
+expect(navigator.serviceWorker.register).toHaveBeenCalled();
 ```
 
 #### `open`

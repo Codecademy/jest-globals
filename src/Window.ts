@@ -1,7 +1,7 @@
 import { createMockLocation, MockLocation } from "./Location";
 import { createMockMediaQueryList } from "./MediaQueryList";
 import { fn, Mock } from "./mocks";
-import { MockNavigator, mockNavigator } from "./Navigator";
+import { createMockNavigator, MockNavigator } from "./Navigator";
 import { createMockPerformance, MockPerformance } from "./Performance";
 import { MockStorage } from "./Storage";
 
@@ -48,9 +48,11 @@ export class MockWindow implements MockWindowMembers {
   getSelection = fn<typeof getSelection>();
   localStorage = new MockStorage();
   location = createMockLocation();
-  matchMedia = fn<typeof matchMedia>().mockReturnValue(createMockMediaQueryList());
+  matchMedia = fn<typeof matchMedia>().mockReturnValue(
+    createMockMediaQueryList()
+  );
   moveBy = fn<typeof moveBy>();
-  navigator = mockNavigator;
+  navigator = createMockNavigator();
   open = fn<typeof open>();
   performance = createMockPerformance();
   postMessage = fn<typeof postMessage>();
