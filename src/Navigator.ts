@@ -1,11 +1,14 @@
 import { createMockClipboard } from "./Clipboard";
 import { fn } from "./mocks";
-import { createMockServiceWorkerContainer, MockServiceWorker } from "./ServiceWorkerContainer";
+import {
+  createMockServiceWorkerContainer,
+  MockServiceWorkerContainer,
+} from "./ServiceWorkerContainer";
 
 export const createMockNavigator = () => ({
   clipboard: createMockClipboard(),
-  userAgent: '' as string | undefined,
-  serviceWorker: createMockServiceWorkerContainer() as MockServiceWorker | undefined,
+  userAgent: "" as string | undefined,
+  serviceWorker: createMockServiceWorkerContainer() as MockServiceWorkerContainer | undefined,
   platform: "",
   sendBeacon: fn<Navigator["sendBeacon"]>(),
 });

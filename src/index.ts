@@ -44,5 +44,9 @@ export const {
   top,
 } = globals;
 
+export {
+  createMockServiceWorkerContainer,
+  MockServiceWorkerContainer,
+} from "./ServiceWorkerContainer";
 export { MockStorage } from "./Storage";
 export { MockWindow } from "./Window";

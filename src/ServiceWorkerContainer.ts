@@ -10,4 +10,4 @@ export const createMockServiceWorkerContainer = (overrides?: Partial<ServiceWork
   ...overrides,
 });
 
-export type MockServiceWorker = ReturnType<typeof createMockServiceWorkerContainer>;
+export type MockServiceWorkerContainer = ReturnType<typeof createMockServiceWorkerContainer>;
