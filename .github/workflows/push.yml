@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        command: ["compile", "format:verify", "lint", "test"]
+        command: ["compile", "format:verify", "lint"]
 
 name: Push
 
