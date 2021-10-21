@@ -8,7 +8,9 @@ import {
 export const createMockNavigator = () => ({
   clipboard: createMockClipboard(),
   userAgent: "" as string | undefined,
-  serviceWorker: createMockServiceWorkerContainer() as MockServiceWorkerContainer | undefined,
+  serviceWorker: createMockServiceWorkerContainer() as
+    | MockServiceWorkerContainer
+    | undefined,
   platform: "",
   sendBeacon: fn<Navigator["sendBeacon"]>(),
 });
