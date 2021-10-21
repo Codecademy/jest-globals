@@ -1,27 +1,16 @@
+name: Push CI
+
 jobs:
-  lint:
+  ci:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: Codecademy/run-on-yarn@v1
         with:
-          cache: "yarn"
-          node-version: "16"
-      - uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-yarn-node-16-${{ hashFiles('yarn.lock') }}
-      - name: Install Dependencies
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn install --frozen-lockfile
-      - run: yarn ${{ matrix.command }}
+          command: ${{ matrix.command }}
 
     strategy:
       fail-fast: false
       matrix:
         command: ["compile", "format:verify", "lint"]
-
-name: Push
 
 on: push
